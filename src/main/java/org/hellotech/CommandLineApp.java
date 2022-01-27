@@ -30,12 +30,6 @@ public class CommandLineApp {
         SpringApplication.run(CommandLineApp.class);
         LOGGER.info("hello after spring run");
 
-        Restaurant restaurant = new Restaurant();
-        restaurant.setId(1);
-        restaurant.setName("Babai Hotel");
-        LOGGER.info("restaurant.getId() {}",restaurant.getId());
-        LOGGER.info("restaurant.getName() {}",restaurant.getName());
-
 
     }
 }
