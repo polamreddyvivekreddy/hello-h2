@@ -11,4 +11,5 @@ public class Menu {
 
     private boolean isMultiCuisine;
     private Map<String, Double> itemPriceMap;
+
 }
