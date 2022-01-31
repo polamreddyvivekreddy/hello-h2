@@ -1,14 +1,13 @@
 package org.hellotech.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.hellotech.model.Restaurant;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Slf4j
 public class RestaurantRestController {
 
     /*@RestController = @Controller + @ResponseBody
@@ -22,6 +21,7 @@ public class RestaurantRestController {
 
     @PostMapping("add-new-restaurant")
     public Restaurant addNewRestaurant(int id, String name) {
+        log.info("Request Params passed: {} & {}", id, name);
         Restaurant restaurant = new Restaurant(id, name);
         return restaurant;
     }
