@@ -1,9 +1,12 @@
 package org.hellotech.entity;
 
+import lombok.Getter;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
+@Getter // In order for PersonController to return proper values, without getMethod() null is returned
 public class Person {
 
     @Id
