@@ -24,4 +24,9 @@ public class PersonController {
     public Iterable<Person> getPersonsWithNoName(){
         return personService.getPersonsWithNoName();
     }
+
+    @GetMapping("/persons-by-page")
+    public Iterable<Person> getPersonsByPage(){
+        return personService.getPersonsByPage();
+    }
 }

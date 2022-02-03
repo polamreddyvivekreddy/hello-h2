@@ -5,6 +5,8 @@ import org.hellotech.repository.FoodRepository;
 import org.hellotech.repository.PersonRepository;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -33,5 +35,10 @@ public class PersonService {
         Example<Person> personExample = Example.of(personWithNoName,exampleMatcher);
 
         return personRepository.findAll(personExample);
+    }
+
+    public Iterable<Person> getPersonsByPage() {
+        // page is 0 based index
+        return personRepository.findAll(PageRequest.of(1,2));
     }
 }
