@@ -1,7 +1,10 @@
 package org.hellotech.service;
 
 import org.hellotech.entity.Person;
+import org.hellotech.repository.FoodRepository;
 import org.hellotech.repository.PersonRepository;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 
@@ -16,5 +19,19 @@ public class PersonService {
 
     public Iterable<Person> getAllPersons() {
         return personRepository.findAll();
+    }
+
+    public Iterable<Person> getPersonsWithNoName() {
+        Person personWithNoName = new Person();
+        personWithNoName.setUid(80);
+        personWithNoName.setAge(30);
+        personWithNoName.setName("");
+        personWithNoName.setDateOfBirth("01-Jan-2000");
+
+        ExampleMatcher exampleMatcher = ExampleMatcher.matching()
+                .withMatcher("name", ExampleMatcher.GenericPropertyMatchers.exact()).withIgnorePaths("uid","age","dateOfBirth");
+        Example<Person> personExample = Example.of(personWithNoName,exampleMatcher);
+
+        return personRepository.findAll(personExample);
     }
 }

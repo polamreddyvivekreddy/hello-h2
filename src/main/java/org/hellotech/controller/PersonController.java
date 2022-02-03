@@ -14,8 +14,14 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping
+    @GetMapping("/persons-all-registered")
+    // private methods works sometimes as Spring uses Reflection but SONAR suggests usage of public methods for @RequestMapping
     public Iterable<Person> getAllRegisteredPersons() {
         return personService.getAllPersons();
+    }
+
+    @GetMapping("/persons-all-with-no-name")
+    public Iterable<Person> getPersonsWithNoName(){
+        return personService.getPersonsWithNoName();
     }
 }
