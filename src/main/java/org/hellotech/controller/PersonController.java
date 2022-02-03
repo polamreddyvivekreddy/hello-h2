@@ -26,7 +26,7 @@ public class PersonController {
     }
 
     @GetMapping("/persons-by-page")
-    public Iterable<Person> getPersonsByPage(){
-        return personService.getPersonsByPage();
+    public Iterable<Person> getPersonsByPage(int pageNumber, int itemsPerPage){
+        return personService.getPersonsByPage(pageNumber, itemsPerPage);
     }
 }

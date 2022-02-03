@@ -37,8 +37,8 @@ public class PersonService {
         return personRepository.findAll(personExample);
     }
 
-    public Iterable<Person> getPersonsByPage() {
+    public Iterable<Person> getPersonsByPage(int pageNumber, int itemsPerPage) {
         // page is 0 based index
-        return personRepository.findAll(PageRequest.of(1,2));
+        return personRepository.findAll(PageRequest.of(pageNumber,itemsPerPage));
     }
 }
