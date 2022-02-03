@@ -1,10 +1,11 @@
 package org.hellotech.service;
 
 import org.hellotech.entity.Person;
-import org.hellotech.repository.FoodRepository;
 import org.hellotech.repository.PersonRepository;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 
 @Service
@@ -18,6 +19,10 @@ public class PersonService {
 
     public Iterable<Person> getAllPersons() {
         return personRepository.findAll();
+    }
+
+    public Optional<Person> getPersonAsPerProvidedId(int id) {
+        return personRepository.findById(id);
     }
 
     public Iterable<Person> getPersonsWithNoName() {
@@ -61,6 +66,7 @@ public class PersonService {
         Pageable personPage = PageRequest.of(pageNumber, itemsPerPage, Sort.by(direction,"age"));
         return personRepository.findAll(personExample, personPage);
     }
+
 
 
 }

@@ -6,6 +6,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 public class PersonController {
 
@@ -19,6 +21,11 @@ public class PersonController {
     // private methods works sometimes as Spring uses Reflection but SONAR suggests usage of public methods for @RequestMapping
     public Iterable<Person> getAllRegisteredPersons() {
         return personService.getAllPersons();
+    }
+
+    @GetMapping("/person-as-per-id")
+    public Optional<Person> getPersonAsPerProvidedId(int id){
+        return personService.getPersonAsPerProvidedId(id);
     }
 
     @GetMapping("/persons-all-with-no-name")
