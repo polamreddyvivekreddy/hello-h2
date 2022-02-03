@@ -1,10 +1,11 @@
 package org.hellotech.entity;
 
-import org.hibernate.annotations.GeneratorType;
+import lombok.Getter;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
 public class Food {
 
     @Id
