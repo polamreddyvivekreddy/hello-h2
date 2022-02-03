@@ -2,6 +2,7 @@ package org.hellotech.controller;
 
 import org.hellotech.entity.Person;
 import org.hellotech.service.PersonService;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,7 +32,8 @@ public class PersonController {
     }
 
     @GetMapping("/persons-sort-by-uid")
-    public Iterable<Person> getPersonsSortByUid(){
-        return personService.getPersonsSortByUid();
+    public Iterable<Person> getPersonsSortByUid(Sort.Direction direction){
+        // direction allowed values: ASC, DESC
+        return personService.getPersonsSortByUid(direction);
     }
 }

@@ -39,7 +39,7 @@ public class PersonService {
         return personRepository.findAll(PageRequest.of(pageNumber,itemsPerPage));
     }
 
-    public Iterable<Person> getPersonsSortByUid() {
-        return personRepository.findAll(Sort.by(Sort.Direction.ASC,"uid"));
+    public Iterable<Person> getPersonsSortByUid(Sort.Direction direction) {
+        return personRepository.findAll(Sort.by(direction,"uid"));
     }
 }
