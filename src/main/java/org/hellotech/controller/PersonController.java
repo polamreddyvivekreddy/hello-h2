@@ -29,4 +29,9 @@ public class PersonController {
     public Iterable<Person> getPersonsByPage(int pageNumber, int itemsPerPage){
         return personService.getPersonsByPage(pageNumber, itemsPerPage);
     }
+
+    @GetMapping("/persons-sort-by-uid")
+    public Iterable<Person> getPersonsSortByUid(){
+        return personService.getPersonsSortByUid();
+    }
 }

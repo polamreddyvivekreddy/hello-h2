@@ -3,10 +3,7 @@ package org.hellotech.service;
 import org.hellotech.entity.Person;
 import org.hellotech.repository.FoodRepository;
 import org.hellotech.repository.PersonRepository;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 
@@ -40,5 +37,9 @@ public class PersonService {
     public Iterable<Person> getPersonsByPage(int pageNumber, int itemsPerPage) {
         // page is 0 based index
         return personRepository.findAll(PageRequest.of(pageNumber,itemsPerPage));
+    }
+
+    public Iterable<Person> getPersonsSortByUid() {
+        return personRepository.findAll(Sort.by(Sort.Direction.ASC,"uid"));
     }
 }
