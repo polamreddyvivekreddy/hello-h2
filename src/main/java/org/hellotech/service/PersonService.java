@@ -43,6 +43,10 @@ public class PersonService {
         return personRepository.findAll(Sort.by(direction, "uid"));
     }
 
+    public Iterable<Person> getPersonsByPageAndSortByName(int pageNumber, int itemsPerPage, Sort.Direction direction) {
+        return personRepository.findAll(PageRequest.of(pageNumber,itemsPerPage,Sort.by(direction,"name")));
+    }
+
     public Iterable<Person> getPersonsByPageSortByAgeAndHavingNoName(int pageNumber, int itemsPerPage, Sort.Direction direction) {
         Person personWithNoName = new Person();
         personWithNoName.setUid(80);
@@ -57,4 +61,6 @@ public class PersonService {
         Pageable personPage = PageRequest.of(pageNumber, itemsPerPage, Sort.by(direction,"age"));
         return personRepository.findAll(personExample, personPage);
     }
+
+
 }

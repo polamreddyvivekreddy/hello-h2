@@ -37,6 +37,11 @@ public class PersonController {
         return personService.getPersonsSortByUid(direction);
     }
 
+    @GetMapping("/persons-by-page-and-sort-by-name")
+    public Iterable<Person> getPersonsByPageAndSortByName(int pageNumber, int itemsPerPage, Sort.Direction direction){
+        return personService.getPersonsByPageAndSortByName(pageNumber, itemsPerPage, direction);
+    }
+
     @GetMapping("/persons-by-page-sort-by-age-and-having-no-name")
     public Iterable<Person> getPersonsByPageSortByAgeAndHavingNoName(int pageNumber, int itemsPerPage, Sort.Direction direction){
         return personService.getPersonsByPageSortByAgeAndHavingNoName(pageNumber, itemsPerPage, direction);
