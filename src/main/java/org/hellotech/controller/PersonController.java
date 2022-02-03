@@ -36,4 +36,9 @@ public class PersonController {
         // direction allowed values: ASC, DESC
         return personService.getPersonsSortByUid(direction);
     }
+
+    @GetMapping("/persons-by-page-sort-by-age-and-having-no-name")
+    public Iterable<Person> getPersonsByPageSortByAgeAndHavingNoName(int pageNumber, int itemsPerPage, Sort.Direction direction){
+        return personService.getPersonsByPageSortByAgeAndHavingNoName(pageNumber, itemsPerPage, direction);
+    }
 }
