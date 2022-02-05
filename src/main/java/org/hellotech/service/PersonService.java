@@ -90,4 +90,8 @@ public class PersonService {
     public void deletePersonByUid(int uid) {
         personRepository.deleteById(uid);
     }
+
+    public Iterable<Person> addAllPersons(Iterable<Person> persons) {
+        return personRepository.saveAllAndFlush(persons);
+    }
 }

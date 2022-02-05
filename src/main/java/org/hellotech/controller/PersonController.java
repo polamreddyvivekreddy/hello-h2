@@ -4,10 +4,7 @@ import org.hellotech.entity.Person;
 import org.hellotech.service.PersonService;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -23,6 +20,11 @@ public class PersonController {
     @PostMapping("/add-new-person")
     public Person addNewPerson(int uid, String name, int age, String dateOfBirth) {
         return personService.addNewPerson(uid, name, age, dateOfBirth);
+    }
+
+    @PostMapping("/add-all-persons")
+    public Iterable<Person> addAllPersons(@RequestBody Iterable<Person> persons){
+        return personService.addAllPersons(persons);
     }
 
     @GetMapping("/persons-count")
