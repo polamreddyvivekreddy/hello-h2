@@ -4,6 +4,7 @@ import org.hellotech.entity.Person;
 import org.hellotech.service.PersonService;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
@@ -17,6 +18,11 @@ public class PersonController {
         this.personService = personService;
     }
 
+    @PostMapping("/add-new-person")
+    public Person addNewPerson(int uid, String name, int age, String dateOfBirth) {
+        return personService.addNewPerson(uid, name, age, dateOfBirth);
+    }
+
     @GetMapping("/persons-all-registered")
     // private methods works sometimes as Spring uses Reflection but SONAR suggests usage of public methods for @RequestMapping
     public Iterable<Person> getAllRegisteredPersons() {
@@ -24,33 +30,33 @@ public class PersonController {
     }
 
     @GetMapping("/person-as-per-id")
-    public Optional<Person> getPersonAsPerProvidedId(int id){
+    public Optional<Person> getPersonAsPerProvidedId(int id) {
         return personService.getPersonAsPerProvidedId(id);
     }
 
     @GetMapping("/persons-all-with-no-name")
-    public Iterable<Person> getPersonsWithNoName(){
+    public Iterable<Person> getPersonsWithNoName() {
         return personService.getPersonsWithNoName();
     }
 
     @GetMapping("/persons-by-page")
-    public Iterable<Person> getPersonsByPage(int pageNumber, int itemsPerPage){
+    public Iterable<Person> getPersonsByPage(int pageNumber, int itemsPerPage) {
         return personService.getPersonsByPage(pageNumber, itemsPerPage);
     }
 
     @GetMapping("/persons-sort-by-uid")
-    public Iterable<Person> getPersonsSortByUid(Sort.Direction direction){
+    public Iterable<Person> getPersonsSortByUid(Sort.Direction direction) {
         // direction allowed values: ASC, DESC
         return personService.getPersonsSortByUid(direction);
     }
 
     @GetMapping("/persons-by-page-and-sort-by-name")
-    public Iterable<Person> getPersonsByPageAndSortByName(int pageNumber, int itemsPerPage, Sort.Direction direction){
+    public Iterable<Person> getPersonsByPageAndSortByName(int pageNumber, int itemsPerPage, Sort.Direction direction) {
         return personService.getPersonsByPageAndSortByName(pageNumber, itemsPerPage, direction);
     }
 
     @GetMapping("/persons-by-page-sort-by-age-and-having-no-name")
-    public Iterable<Person> getPersonsByPageSortByAgeAndHavingNoName(int pageNumber, int itemsPerPage, Sort.Direction direction){
+    public Iterable<Person> getPersonsByPageSortByAgeAndHavingNoName(int pageNumber, int itemsPerPage, Sort.Direction direction) {
         return personService.getPersonsByPageSortByAgeAndHavingNoName(pageNumber, itemsPerPage, direction);
     }
 }

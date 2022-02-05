@@ -49,7 +49,7 @@ public class PersonService {
     }
 
     public Iterable<Person> getPersonsByPageAndSortByName(int pageNumber, int itemsPerPage, Sort.Direction direction) {
-        return personRepository.findAll(PageRequest.of(pageNumber,itemsPerPage,Sort.by(direction,"name")));
+        return personRepository.findAll(PageRequest.of(pageNumber, itemsPerPage, Sort.by(direction, "name")));
     }
 
     public Iterable<Person> getPersonsByPageSortByAgeAndHavingNoName(int pageNumber, int itemsPerPage, Sort.Direction direction) {
@@ -63,10 +63,13 @@ public class PersonService {
                 .withMatcher("name", ExampleMatcher.GenericPropertyMatchers.exact()).withIgnorePaths("uid", "age", "dateOfBirth");
         Example<Person> personExample = Example.of(personWithNoName, exampleMatcher);
 
-        Pageable personPage = PageRequest.of(pageNumber, itemsPerPage, Sort.by(direction,"age"));
+        Pageable personPage = PageRequest.of(pageNumber, itemsPerPage, Sort.by(direction, "age"));
         return personRepository.findAll(personExample, personPage);
     }
 
 
-
+    public Person addNewPerson(int uid, String name, int age, String dateOfBirth) {
+        // flush ensures commit to db otherwise data lost after end of session
+        return personRepository.saveAndFlush(new Person(uid, name, age, dateOfBirth));
+    }
 }
