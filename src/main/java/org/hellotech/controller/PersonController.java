@@ -3,6 +3,8 @@ package org.hellotech.controller;
 import org.hellotech.entity.Person;
 import org.hellotech.service.PersonService;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,12 +26,12 @@ public class PersonController {
     }
 
     @GetMapping("/persons-count")
-    public long getCountOfPersons(){
+    public long getCountOfPersons() {
         return personService.getCountOfPersons();
     }
 
     @GetMapping("/persons-count-with-no-name")
-    public long getCountOfPersonsWithNoName(){
+    public long getCountOfPersonsWithNoName() {
         return personService.getCountOfPersonsWithNoName();
     }
 
@@ -68,5 +70,10 @@ public class PersonController {
     @GetMapping("/persons-by-page-sort-by-age-and-having-no-name")
     public Iterable<Person> getPersonsByPageSortByAgeAndHavingNoName(int pageNumber, int itemsPerPage, Sort.Direction direction) {
         return personService.getPersonsByPageSortByAgeAndHavingNoName(pageNumber, itemsPerPage, direction);
+    }
+
+    @DeleteMapping("/person-delete-by-uid")
+    public void deletePersonByUid(int uid) {
+        personService.deletePersonByUid(uid);
     }
 }

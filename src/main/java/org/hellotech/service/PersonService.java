@@ -81,9 +81,13 @@ public class PersonService {
         Person personWithNoName = new Person();
         personWithNoName.setName("");
 
-        ExampleMatcher personExampleMatcherWithNoName = ExampleMatcher.matching().withMatcher("name", ExampleMatcher.GenericPropertyMatchers.exact()).withIgnorePaths("uid","age","dateOfBirth");
-        Example<Person> personExampleWithNoName = Example.of(personWithNoName,personExampleMatcherWithNoName);
+        ExampleMatcher personExampleMatcherWithNoName = ExampleMatcher.matching().withMatcher("name", ExampleMatcher.GenericPropertyMatchers.exact()).withIgnorePaths("uid", "age", "dateOfBirth");
+        Example<Person> personExampleWithNoName = Example.of(personWithNoName, personExampleMatcherWithNoName);
 
         return personRepository.count(personExampleWithNoName);
+    }
+
+    public void deletePersonByUid(int uid) {
+        personRepository.deleteById(uid);
     }
 }
