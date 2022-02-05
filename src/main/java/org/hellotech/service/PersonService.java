@@ -72,4 +72,8 @@ public class PersonService {
         // flush ensures commit to db otherwise data lost after end of session
         return personRepository.saveAndFlush(new Person(uid, name, age, dateOfBirth));
     }
+
+    public long getCountOfPersons() {
+        return personRepository.count();
+    }
 }
