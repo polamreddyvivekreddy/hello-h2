@@ -28,6 +28,11 @@ public class PersonController {
         return personService.getCountOfPersons();
     }
 
+    @GetMapping("/persons-count-with-no-name")
+    public long getCountOfPersonsWithNoName(){
+        return personService.getCountOfPersonsWithNoName();
+    }
+
     @GetMapping("/persons-all-registered")
     // private methods works sometimes as Spring uses Reflection but SONAR suggests usage of public methods for @RequestMapping
     public Iterable<Person> getAllRegisteredPersons() {
