@@ -1,9 +1,6 @@
 package org.hellotech.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,6 +8,7 @@ import javax.persistence.Id;
 @Entity
 @Getter // In order for PersonController to return proper values, without getMethod() null is returned
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Person {
