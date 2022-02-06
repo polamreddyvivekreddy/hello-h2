@@ -1,11 +1,15 @@
 package org.hellotech.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Food {
 
     @Id
@@ -14,20 +18,16 @@ public class Food {
 
     private String breakfast;
 
+    @OneToOne // By default maps primary key of Person
+    private Person person;
+
     /*@ManyToOne
     @JoinColumn(name = "uid_fk")
     private Person person;*/
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinTable(name = "FOOD_PERSON")
-    private Person person;
+    private Person person;*/
 
-    public Food() {
-    }
 
-    public Food( String breakfast, Person person) {
-
-        this.breakfast = breakfast;
-        this.person = person;
-    }
 }
