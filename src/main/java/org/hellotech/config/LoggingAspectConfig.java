@@ -22,4 +22,10 @@ public class LoggingAspectConfig {
     public void logAfterExecutingControllerPublicMethods(JoinPoint joinPoint) {
         log.info("Executed : {}", joinPoint.getSignature().getName());
     }
+
+    // TODO: @Around, @AfterReturning @AfterThrowing
+    /**
+     * For implementing @AfterReturning @AfterThrowing
+     * we have to inject service beans in this class
+     */
 }
