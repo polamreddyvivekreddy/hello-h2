@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 @SpringBootApplication
 @Slf4j
@@ -30,6 +31,7 @@ public class CommandLineApp implements CommandLineRunner {
     }
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
         //Check @OneToOne
         Food food = entityManager.find(Food.class, 1);

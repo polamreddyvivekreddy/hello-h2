@@ -20,7 +20,9 @@ public class Food {
 
     private String breakfast;
 
-    @OneToOne // By default maps primary key of Person
+    // By default maps primary key of Person
+    // By default uses eager fetching
+    @OneToOne(fetch = FetchType.LAZY)
     private Person person;
 
     /*@ManyToOne
