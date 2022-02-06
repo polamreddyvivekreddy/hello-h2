@@ -1,6 +1,7 @@
 package org.hellotech;
 
 import lombok.extern.slf4j.Slf4j;
+import org.hellotech.entity.Delivery;
 import org.hellotech.entity.Food;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,11 +33,21 @@ public class CommandLineApp implements CommandLineRunner {
 
     @Override
     @Transactional
-    public void run(String... args) throws Exception {
-        //Check @OneToOne
+    public void run(String... args) {
+        //Check @OneToOne UniDirectional
         Food food = entityManager.find(Food.class, 1);
-        log.info("food : {}", food);
-        log.info("foodEatenByPerson : {}", food.getPerson());
+        log.info("food: {}", food);
+        log.info("foodEatenByPerson: {}", food.getPerson());
+
+        //Check @OneToOne BiDirectional
+        Food anotherFood = entityManager.find(Food.class, 2);
+        log.info("food: {}", food);
+        log.info("foodDelivery: {}", food.getDelivery());
+
+        //Check @OneToOne BiDirectional
+        Delivery delivery = entityManager.find(Delivery.class,201);
+        log.info("delivery: {}", delivery);
+        log.info("deliveredFood: {}",delivery.getFood());
 
     }
 }

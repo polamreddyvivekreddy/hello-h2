@@ -22,8 +22,11 @@ public class Food {
 
     // By default maps primary key of Person
     // By default uses eager fetching
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY) // UniDirectional
     private Person person;
+
+    @OneToOne // BiDirectional & Owning side
+    private Delivery delivery;
 
     /*@ManyToOne
     @JoinColumn(name = "uid_fk")
@@ -33,5 +36,12 @@ public class Food {
     @JoinTable(name = "FOOD_PERSON")
     private Person person;*/
 
-
+    @Override // overridden to solve error with Delivery object availability
+    public String toString() {
+        return "Food{" +
+                "day=" + day +
+                ", breakfast='" + breakfast + '\'' +
+                ", person=" + person +
+                '}';
+    }
 }
