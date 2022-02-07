@@ -11,6 +11,7 @@ insert into DELIVERY values(201, 'Kavali');
 insert into DELIVERY values(202, 'Nellore');
 
 -- FOOD has Person as @OneToOne & Delivery as @OneToOne
+-- Q: @OneToOne but we inserted same person more than once?
 insert into FOOD VALUES(1,'Dosa', 201, 1001);
 insert into FOOD VALUES(2,'Idli', 202, 1001);
 insert into FOOD VALUES(3,'Puri', 201, 1002);
