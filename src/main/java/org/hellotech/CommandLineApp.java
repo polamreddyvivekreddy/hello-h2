@@ -41,8 +41,8 @@ public class CommandLineApp implements CommandLineRunner {
 
         //Check @OneToOne BiDirectional
         Food anotherFood = entityManager.find(Food.class, 2);
-        log.info("food: {}", food);
-        log.info("foodDelivery: {}", food.getDelivery());
+        log.info("anotherFood: {}", food);
+        log.info("anotherFoodDelivery: {}", anotherFood.getDelivery());
 
         //Check @OneToOne BiDirectional
         Delivery delivery = entityManager.find(Delivery.class,201);
