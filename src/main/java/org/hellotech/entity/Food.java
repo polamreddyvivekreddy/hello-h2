@@ -25,6 +25,7 @@ public class Food {
     @OneToOne(fetch = FetchType.LAZY) // UniDirectional
     private Person person;
 
+    //https://docs.jboss.org/hibernate/orm/5.3/userguide/html_single/Hibernate_User_Guide.html#associations-one-to-one
     @OneToOne // BiDirectional & Owning side
     private Delivery delivery;
 
